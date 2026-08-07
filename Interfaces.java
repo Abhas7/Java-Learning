@@ -1,19 +1,20 @@
-@FunctionalInterface
-interface Hello {
-    void sayHello();
-}
-
-@FunctionalInterface
-interface Greeting {
-    String greet();
-}
-
-@FunctionalInterface
-interface Maths {
-    int sum(int a, int b);
-}
-
 public class Interfaces {
+
+    @FunctionalInterface
+    interface Hello {
+        void sayHello();
+    }
+
+    @FunctionalInterface
+    interface Greeting {
+        String greet();
+    }
+
+    @FunctionalInterface
+    interface Maths {
+        int sum(int a, int b);
+    }
+
     public static void main(String[] args) {
 
         Hello h1 = () -> System.out.println("Hello Lambda");
