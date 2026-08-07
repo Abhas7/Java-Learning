@@ -10,7 +10,7 @@
         return data;
     } 
 
-    public void setData(T data) {
+    public void setData(T data) { 
         this.data = data;
     }
 
@@ -27,7 +27,7 @@ import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.Predicate; 
 import java.util.function.Supplier;
 
 public class FunctionalDemo {
@@ -43,8 +43,31 @@ public class FunctionalDemo {
 
         Consumer<String> c1 = System.out::println;
         c1.accept("Hello");
-
+    
         Consumer<String> c2 = FunctionalDemo::print;
         c2.accept("Aloha");
-    }
-}
+
+        Supplier<String> s1 = () -> {
+            return "Abhas"; 
+        };
+        System.out.println(s1.get());
+
+        Supplier<Double> random = () -> Math.random();
+        System.out.println(random.get());
+
+        Predicate<Integer> odd = n -> n % 2 == 0;
+        System.out.println(odd.test(4));
+
+        BiPredicate<Integer, Integer> greater = (a, b) -> a > b;
+        System.out.println(greater.test(4, 6));
+
+        Function<Integer, Integer> add5 = n -> n + 5;
+        System.out.println(add5.apply(20)); 
+
+        BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b; 
+        System.out.println(add.apply(10, 20));
+ 
+
+    } 
+}   
+
