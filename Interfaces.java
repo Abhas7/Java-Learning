@@ -8,9 +8,9 @@ interface Greeting {
     String greet();
 }
 
-@FunctionalInterface
+@FunctionalInterface 
 interface Maths {
-    int sum(int a, int b);
+    int sum(int a, int b);   
 }
 
 class HelloDemo {

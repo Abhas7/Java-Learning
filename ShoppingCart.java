@@ -14,7 +14,8 @@ public class ShoppingCart {
         cart.add("Iphone"); 
         cart.add("Ipad");
         cart.add("Ipod");
-
+        cart.add("Marker");
+    
         cart.checkout();
     }
 
