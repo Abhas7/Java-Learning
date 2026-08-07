@@ -23,7 +23,7 @@
     }
 }*/
 
-import java.util.function.BiFunction;
+/*import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -40,7 +40,7 @@ public class FunctionalDemo {
 
         Consumer<String> c = (s) -> System.out.println(s);
         c.accept("Adios");
-
+    
         Consumer<String> c1 = System.out::println;
         c1.accept("Hello");
     
@@ -52,7 +52,7 @@ public class FunctionalDemo {
         };
         System.out.println(s1.get());
 
-        Supplier<Double> random = () -> Math.random();
+        Supplier<Double> random = () -> Math.random();  
         System.out.println(random.get());
 
         Predicate<Integer> odd = n -> n % 2 == 0;
@@ -69,5 +69,50 @@ public class FunctionalDemo {
  
 
     } 
-}   
+}   */
 
+
+
+/*import java.util.Base64;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
+
+public class EncodingDemo {
+
+    public static void main(String[] args) {
+
+        String password = "P@ssW0rd123";
+        System.out.println(password);
+
+        Encoder encoder = Base64.getEncoder();
+        String encoded = encoder.encodeToString(password.getBytes());
+        System.out.println(encoded);
+
+        Decoder decoder = Base64.getDecoder();
+        byte[] decoded = decoder.decode(encoded.getBytes());
+        System.out.println(new String(decoded));
+    }
+}*/
+
+public class Car {
+
+    private String model;
+    private String[] features;
+
+    // Var-args: Can only be the last argument of the method
+    public Car(String model, String... features) {
+        this.model = model;
+        this.features = features; 
+    } 
+
+    public void specs() {
+        System.out.println("Feature of " + model);
+        for (String f : features)
+            System.out.println(f); 
+    }
+
+    public static void main(String[] args) { 
+        Car astor = new Car("MG Astor", "Keyless", "ABS", "ADAS", "Cruise");
+        astor.specs(); 
+    }
+}
