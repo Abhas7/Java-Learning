@@ -1,20 +1,19 @@
-public class Interfaces {
+@FunctionalInterface
+interface Hello {
+    void sayHello();
+}
 
-    @FunctionalInterface
-    interface Hello {
-        void sayHello();
-    }
+@FunctionalInterface
+interface Greeting {
+    String greet();
+}
 
-    @FunctionalInterface
-    interface Greeting {
-        String greet();
-    }
+@FunctionalInterface
+interface Maths {
+    int sum(int a, int b);
+}
 
-    @FunctionalInterface
-    interface Maths {
-        int sum(int a, int b);
-    }
-
+class HelloDemo {
     public static void main(String[] args) {
 
         Hello h1 = () -> System.out.println("Hello Lambda");
@@ -24,6 +23,6 @@ public class Interfaces {
         System.out.println(g1.greet());
 
         Maths m1 = (a, b) -> a + b;
-        System.out.println("Sum: " + m1.sum(10, 20));
+        System.out.println(m1.sum(10, 20));
     }
 }
