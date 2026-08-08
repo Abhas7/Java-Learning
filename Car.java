@@ -107,7 +107,7 @@ public class Car {
 
     public void specs() {
         System.out.println("Feature of " + model);
-        for (String f : features)
+        for (String f : features) 
             System.out.println(f); 
     }
 

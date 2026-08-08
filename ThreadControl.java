@@ -4,8 +4,9 @@ public class ThreadControl extends Thread{
     }
     public void run(){
         String name = Thread.currentThread().getName();
-        while(true) {
+        while(true) { 
             System.out.println(name);
+            Thread.yield();
         }
     }
     public static void main(String[] args) {

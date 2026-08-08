@@ -14,7 +14,7 @@
   faster and communication between threads easier compared to processes.
 
 - Benefits of Multithreading:
-  * Better CPU utilization (non-blocking operations)
+  * Better CPU utilization (non-blocking operations) 
   * Faster execution of independent tasks
   * Responsive User Interfaces (UI remains responsive while background tasks run)
 
@@ -188,7 +188,7 @@ synchronized(lock) {
    try {
        // critical section
    } finally {
-       lock.unlock(); // Always unlock in finally block
+       lock.unlock(); // Always unlock in finally block 
    }
 
 3. Atomic Classes (java.util.concurrent.atomic):

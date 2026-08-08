@@ -14,8 +14,8 @@ public class MyThread extends Thread {
         for (int c = 1; c <= 50; c++)
             System.out.println(tname + ": " + ++data);
     }
-
-    public static void main(String[] args) { 
+ 
+    public static void main(String[] args) {
         MyThread t1 = new MyThread("First");    
         MyThread t2 = new MyThread("Second");
         MyThread t3 = new MyThread("Third");

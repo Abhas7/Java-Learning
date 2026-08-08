@@ -6,7 +6,7 @@ public class ShoppingCart {
     } 
 
     public void checkout() {
-
+                      
     }
 
     public static void main(String[] args) {
