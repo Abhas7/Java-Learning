@@ -3,8 +3,8 @@
 ===================================================================
 
 1. INTRODUCTION TO MULTITHREADING
--------------------------------------------------------------------
-- Multitasking: Executing multiple tasks simultaneously.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- Multitasking: Executing multiple tasks simultaneously. 
   1. Process-based: Executing multiple programs concurrently (OS level).
   2. Thread-based: Executing multiple parts of the same program concurrently.
 
@@ -20,7 +20,7 @@
 
 
 2. THREAD LIFECYCLE (STATES OF A THREAD)
--------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 A thread in Java moves through various states (defined in Thread.State enum):
 
   [ NEW ] ---> (start()) ---> [ RUNNABLE ] <---> [ BLOCKED / WAITING / TIMED_WAITING ]
@@ -39,7 +39,7 @@ A thread in Java moves through various states (defined in Thread.State enum):
 3. WAYS TO CREATE A THREAD IN JAVA
 -------------------------------------------------------------------
 Approach 1: Extending Thread Class
-----------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class MyThread extends Thread {
     @Override
     public void run() {
