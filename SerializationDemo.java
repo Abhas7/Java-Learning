@@ -89,11 +89,11 @@ public class SerializationDemo {
         ostream = new ObjectOutputStream(new FileOutputStream(path));
         ostream.writeObject(p); // serializing object
         ostream.close();
-        System.out.println("Object serialized...");
+        System.out.println("Object serialized..."); 
 
         // Deserialization code
         istream = new ObjectInputStream(new FileInputStream(path));
-        Object obj = istream.readObject(); // Deserializing object
+        Object obj = istream.readObject(); // Deserializing object 
         System.out.println(obj);
         istream.close();
     }
