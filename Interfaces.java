@@ -22,7 +22,7 @@ class HelloDemo {
         Greeting g1 = () -> "Good Morning";
         System.out.println(g1.greet());
 
-        Maths m1 = (a, b) -> a + b;
+        Maths m1 = (a, b) -> a + b; 
         System.out.println(m1.sum(10, 20));
     }
 }
