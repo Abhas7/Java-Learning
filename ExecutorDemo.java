@@ -15,11 +15,11 @@ class GoRunnable implements Runnable {
         for (long i = 1; i < countUntil; i++) {
             sum += i;
         }
-
+    
         System.out.println(sum);
     } 
 }
- 
+
 public class ExecutorDemo {
 
     private static final int NTHREADS = 10;
@@ -28,7 +28,7 @@ public class ExecutorDemo {
         ExecutorService executor = Executors.newFixedThreadPool(NTHREADS);
         long start = System.currentTimeMillis();
         for(int i = 0; i < 500 ; i++) {
-            Runnable worker = new GoRunnable(100000000L + i);
+            Runnable worker = new GoRunnable(1000000000000L + i);
             executor.execute(worker);
 
         }
