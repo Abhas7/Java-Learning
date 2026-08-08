@@ -23,10 +23,11 @@ public class MyDaemon extends Thread {
 
         MyDaemon d4 = new MyDaemon(100000, "daemon");
         d4.setDaemon(true);
-        d4.start();
 
+        d4.start();
         d1.start();
         d2.start();
-        d3.start(); 
+        d3.start();
+
     }
 }

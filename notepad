@@ -1,2 +1,210 @@
-Multithreading - to perform the multi tasks. 
+===================================================================
+                  JAVA MULTITHREADING COMPLETE GUIDE
+===================================================================
 
+1. INTRODUCTION TO MULTITHREADING
+-------------------------------------------------------------------
+- Multitasking: Executing multiple tasks simultaneously.
+  1. Process-based: Executing multiple programs concurrently (OS level).
+  2. Thread-based: Executing multiple parts of the same program concurrently.
+
+- What is a Thread?
+  A thread is a lightweight sub-process, the smallest unit of execution.
+  Threads share a common memory space (heap), which makes context switching
+  faster and communication between threads easier compared to processes.
+
+- Benefits of Multithreading:
+  * Better CPU utilization (non-blocking operations)
+  * Faster execution of independent tasks
+  * Responsive User Interfaces (UI remains responsive while background tasks run)
+
+
+2. THREAD LIFECYCLE (STATES OF A THREAD)
+-------------------------------------------------------------------
+A thread in Java moves through various states (defined in Thread.State enum):
+
+  [ NEW ] ---> (start()) ---> [ RUNNABLE ] <---> [ BLOCKED / WAITING / TIMED_WAITING ]
+                                     |
+                                     v 
+                              [ TERMINATED ]
+
+1. NEW: Created but start() has not been called yet.
+2. RUNNABLE: Ready to run or currently executing in the JVM. 
+3. BLOCKED: Waiting to acquire a monitor lock (entering synchronized block/method).
+4. WAITING: Waiting indefinitely for another thread to perform a specific action (wait(), join()).
+5. TIMED_WAITING: Waiting for a specified time period (sleep(ms), wait(ms), join(ms)).
+6. TERMINATED (DEAD): Finished execution of its run() method or halted due to an unhandled exception.
+
+
+3. WAYS TO CREATE A THREAD IN JAVA
+-------------------------------------------------------------------
+Approach 1: Extending Thread Class
+----------------------------------
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Thread is running: " + Thread.currentThread().getName());
+    }
+}
+
+// Usage:
+MyThread t1 = new MyThread();
+t1.start(); // Spawns new thread and invokes run()
+
+Approach 2: Implementing Runnable Interface (Preferred)
+-------------------------------------------------------
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Runnable task executing: " + Thread.currentThread().getName());
+    }
+}
+
+// Usage:
+Thread t2 = new Thread(new MyRunnable());
+t2.start();
+
+* Why Runnable is preferred over extending Thread:
+  - Java doesn't support multiple class inheritance. Implementing Runnable leaves option to extend another class.
+  - Separates the task logic (Runnable) from the thread execution mechanism (Thread).
+
+Approach 3: Callable & Future (java.util.concurrent)
+----------------------------------------------------
+Callable<T> returns a result and can throw checked exceptions.
+
+Callable<Integer> task = () -> {
+    return 42;
+};
+ExecutorService executor = Executors.newSingleThreadExecutor();
+Future<Integer> future = executor.submit(task);
+Integer result = future.get(); // Blocks until completed
+
+
+4. IMPORTANT THREAD METHODS
+-------------------------------------------------------------------
+- start(): Starts a new thread of execution, calling run() asynchronously.
+- run(): Contains the entry code for the thread. (Calling run() directly runs on current thread, not a new thread).
+- sleep(long ms): Pauses current thread execution for given milliseconds without releasing locks.
+- join(): Causes current thread to wait until target thread completes execution.
+- yield(): Hint to scheduler that current thread is willing to yield current use of CPU.
+- interrupt(): Interrupts a sleeping/waiting thread, throwing InterruptedException.
+- isAlive(): Checks if thread is still running/active.
+- currentThread(): Returns reference to the currently executing Thread object.
+- getName() / setName(String): Get/Set thread name.
+
+
+5. DAEMON THREADS VS USER THREADS
+-------------------------------------------------------------------
+- User Threads (Non-Daemon): High-priority background or main application threads. The JVM will NOT exit until all user threads complete execution.
+- Daemon Threads: Low-priority service provider threads (e.g., Garbage Collector). The JVM automatically terminates daemon threads when all user threads finish executing.
+ 
+Setting Daemon Thread:
+  Thread daemonThread = new Thread(runnable);
+  daemonThread.setDaemon(true); // MUST be called before start()
+  daemonThread.start();
+
+
+6. THREAD PRIORITIES
+-------------------------------------------------------------------
+Every thread has a priority between 1 and 10 used by the Thread Scheduler:
+- Thread.MIN_PRIORITY = 1
+- Thread.NORM_PRIORITY = 5 (Default)
+- Thread.MAX_PRIORITY = 10
+
+Usage: thread.setPriority(Thread.MAX_PRIORITY);
+Note: Thread priority execution depends on OS scheduling implementation.
+
+
+7. CONCURRENCY ISSUES & SYNCHRONIZATION
+-------------------------------------------------------------------
+Race Condition:
+  Occurs when multiple threads concurrently read and write shared data without proper synchronization, leading to inconsistent state.
+
+Synchronization (Locking Mechanism):
+  Prevents thread interference and memory consistency errors.
+
+1. Synchronized Method:
+   public synchronized void increment() {
+       count++;
+   }
+
+2. Synchronized Block (Finer granularity):
+   public void process() {
+       synchronized(this) {
+           count++;
+       }
+   }
+
+3. Static Synchronization: Locks the Class object (Class-level lock) rather than the instance.
+   public static synchronized void log() { ... }
+
+Volatile Keyword:
+- Guarantees visibility of changes to variables across threads by reading/writing directly to main memory (bypasses CPU caches).
+- Does NOT guarantee atomicity for compound operations (like count++).
+
+
+8. INTER-THREAD COMMUNICATION
+-------------------------------------------------------------------
+Used to avoid polling. Methods must be called from inside a synchronized context:
+
+- wait(): Thread releases the lock and waits until another thread calls notify() or notifyAll().
+- notify(): Wakes up a single thread waiting on the object's monitor.
+- notifyAll(): Wakes up all threads waiting on the object's monitor.
+
+Classic Producer-Consumer Example Pattern:
+synchronized(lock) {
+    while(buffer.isEmpty()) {
+        lock.wait();
+    }
+    // consume item
+    lock.notifyAll();
+}
+
+
+9. DEADLOCK, LIVELOCK & STARVATION
+-------------------------------------------------------------------
+- Deadlock: Two or more threads are blocked forever, waiting for locks held by each other.
+  Condition for Deadlock: Mutual exclusion, Hold and wait, No preemption, Circular wait.
+  Prevention: Acquire locks in a fixed global order.
+
+- Livelock: Threads constantly change states in response to each other without making actual progress.
+- Starvation: A thread is perpetually denied CPU time because higher priority threads monopolize resources.
+
+
+10. MODERN CONCURRENCY (java.util.concurrent)
+-------------------------------------------------------------------
+1. Thread Pools (Executor Framework):
+   Managing threads manually is expensive. Thread pools reuse pre-created worker threads.
+
+   ExecutorService executor = Executors.newFixedThreadPool(5);
+   executor.execute(new MyRunnable());
+   executor.shutdown();
+
+2. Explicit Locks (ReentrantLock):
+   Offers more control than synchronized keyword (tryLock, lockInterruptibly, fairness).
+
+   ReentrantLock lock = new ReentrantLock();
+   lock.lock();
+   try {
+       // critical section
+   } finally {
+       lock.unlock(); // Always unlock in finally block
+   }
+
+3. Atomic Classes (java.util.concurrent.atomic):
+   Provide lock-free, thread-safe operations on single variables using CPU-level CAS (Compare-And-Swap).
+   Example: AtomicInteger, AtomicBoolean, AtomicLong.
+
+4. Concurrent Collections:
+   Thread-safe alternatives to standard collections without blocking entire collection:
+   - ConcurrentHashMap (Segment / Bucket locking)
+   - CopyOnWriteArrayList (Good for read-heavy scenarios)
+   - BlockingQueue (ArrayBlockingQueue, LinkedBlockingQueue for Producer-Consumer)
+
+
+11. VIRTUAL THREADS (JAVA 21+)
+-------------------------------------------------------------------
+- Lightweight threads managed by the JVM rather than the OS.
+- Millions of virtual threads can run on a small number of OS carrier threads.
+- Created via: Thread.ofVirtual().start(runnable); or Executors.newVirtualThreadPerTaskExecutor();
+===================================================================
