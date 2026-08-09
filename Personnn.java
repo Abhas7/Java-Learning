@@ -7,7 +7,6 @@ public class Personnn{
         this.age = age;
     }
 
-    @Override
     public String toString() {
         return "Personnn [name=" + name + ", age=" + age + "]";
     }
@@ -18,5 +17,8 @@ public class Personnn{
 
     public int getAge() {
         return age;
-    } 
+    }
 }
+
+
+

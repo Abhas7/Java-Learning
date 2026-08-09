@@ -12,11 +12,11 @@ public class HelloDemo{
         Hello h1 = () -> System.out.println("Hello World");
 
         h1.sayHello();
-
+ 
         Greeting g1 = () -> {
             return "Hello";
         };
-
+        
         System.out.println(g1.greet());
-    }
-} 
+    } 
+}

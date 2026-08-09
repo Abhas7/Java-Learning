@@ -78,10 +78,9 @@
 //     }
 // }
 
-
-
 import java.util.HashMap;
-import java.util.Map; 
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MapDemo {
 
@@ -91,8 +90,8 @@ public class MapDemo {
 
         map.put("scott", "tiger");
         map.put("jack", "jill");
-        map.put("polo", "lili"); 
-        map.put("jack", "rose"); 
+        map.put("polo", "lili");
+        map.put("jack", "rose");
 
         System.out.println("Scott: " + map.get("scott"));
         System.out.println("Polo: " + map.get("polo"));
@@ -100,9 +99,27 @@ public class MapDemo {
 
         // Print all keys and values without manually feeding keys
         for (Map.Entry<String, String> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+            // System.out.println(entry.getKey() + ": " + entry.getValue());
 
-            map.forEach((key, value) -> System.out.println(key + ": " + value));
+            // map.forEach((key, value) -> System.out.println(key + ": " + value));
+
+        // System.out.println(numbers.stream().count());
+        // System.out.println(numbers.stream().max(null));
+        // System.err.println(numbers.stream().min(null));
+        // System.err.println(numbers.stream().average(null));
+        // System.err.println(numbers.stream().skip(10));
+        // System.out.println(numbers.stream().filter(e -> e % 2 == 0));
+        // System.out.println(numbers.stream().filter(e -> e % 2 == 0).collect(Collectors.toList()));
+        // System.out.println(numbers.stream().map(e -> e * 2));
+        // System.out.println(numbers.stream().map(e -> e * 2).collect(Collectors.toList()));
+        // System.out.println(numbers.stream().sorted());  
+        // System.out.println(numbers.stream());
+
+
+        IntStream istr = IntStream.of();        
+
+
+            
         }
     }
-} 
+}
