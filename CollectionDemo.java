@@ -1,0 +1,21 @@
+import java.util.LinkedList;
+
+public class CollectionDemo {
+
+    public static void main(String[] args) {
+
+        LinkedList<String> lst = new LinkedList<String>(); 
+
+        lst.add("Microsoft");
+        lst.add("Google");
+        lst.addFirst("Apple");
+        lst.addLast("Apache");
+        lst.add(2, "Oracle");
+
+        System.out.println("--- Traversing using for loop"); 
+
+        for (int i = 0; i < lst.size(); i++) {
+            System.out.println(lst.get(i)); 
+        }
+    }
+} 
