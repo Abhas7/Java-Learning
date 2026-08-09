@@ -91,7 +91,7 @@ public class MapDemo {
 
         map.put("scott", "tiger");
         map.put("jack", "jill");
-        map.put("polo", "lili");
+        map.put("polo", "lili"); 
         map.put("jack", "rose"); 
 
         System.out.println("Scott: " + map.get("scott"));
