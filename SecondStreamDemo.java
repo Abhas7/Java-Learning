@@ -12,7 +12,7 @@ public class SecondStreamDemo {
         );
 
         basket.forEach(System.out::println);
-
+  
         basket.stream()
               .sorted()
               .forEach(System.out::println);
@@ -31,7 +31,7 @@ public class SecondStreamDemo {
                       .count()
         );
 
-        Stream.of("Jim", "Anna", "Mat", "Sam", "Brad", "Leo")
+        Stream.of("JimJam", "Anna", "Mat", "Sam", "Brad", "Leo")
               .sorted()
               .forEach(System.out::println);
     }

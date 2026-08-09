@@ -116,7 +116,7 @@ public class MapDemo {
         // System.out.println(numbers.stream());
 
 
-        IntStream istr = IntStream.of();        
+               
 
 
             
