@@ -31,7 +31,7 @@
 //         System.out.println("Years: " + years);
 //         System.out.println("Months: " + months);
 //         System.out.println("Days: " + days);
-        
+    
 //     }
 // }
 
@@ -49,14 +49,14 @@
 //         LocalTime t1 = LocalTime.now();
 //         System.out.println(t1);
 
-//         LocalTime t2 = LocalTime.of(14, 30, 15); 
+//         LocalTime t2 = LocalTime.of(14, 30, 15);
 //         System.out.println(t2); 
 
 //         LocalTime t3 = LocalTime.parse("18:45:30");
 //         System.out.println(t3);
 
 //         System.out.println(t1.plusHours(2)); 
-//         System.out.println(t1.minus(30, ChronoUnit.MINUTES));
+//         System.out.println(t1.minus(30, ChronoUnit.MINUTES)); 
 //         System.out.println(t2.getSecond()); 
 //         System.out.println(t3.getNano()); 
 //     }
@@ -67,18 +67,18 @@
 // Time Zoned 
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.GregorianCalendar; 
 import java.util.TimeZone;
 
 public class ZoneDataTimeDemo {
 
     public static void main(String[] args) {
-        TimeZone zone = TimeZone.getTimeZone("IST"); 
+        TimeZone zone = TimeZone.getTimeZone("EST");  
 
         Calendar cal = new GregorianCalendar(zone);
 
-        System.out.println(cal.get(Calendar.HOUR));
-        System.out.println(cal.get(Calendar.MINUTE));
+        System.out.println(cal.get(Calendar.HOUR));      
+        System.out.println(cal.get(Calendar.MINUTE)); 
 
         System.out.println(cal.get(Calendar.DAY_OF_MONTH));
     }
