@@ -3,7 +3,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.Collectors; 
 
 public class MapStreamDemo {
     public static void main(String[] args) {
@@ -33,8 +33,18 @@ public class MapStreamDemo {
                 .forEach(System.out::println);
 
         // Print all phone numbers containing 8 
+        contacts.values().stream()
+                .flatMap(Collection::stream)
+                .filter(s -> s.contains("8"))
+                .forEach(System.out::println);
+        
         
        
         // Print all phone numbers removing "-"
-    }
+        contacts.values().stream()
+                .flatMap(Collection::stream)
+                .map(s -> s.replace("-", ""))
+                .forEach(System.out::println);
+        
+    } 
 } 

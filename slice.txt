@@ -1,0 +1,6 @@
+765.Jet,kochi,Kolkata
+123.Indigo,Delhi,Mumbai
+920.Vistara,Delhi,Bengaluru
+002.Spicejet,Chennai,Hyderabad
+567.AirIndia,Kolkata,Mumbai 
+898.AirIndia,Kolkata,Mumbai
