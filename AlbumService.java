@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.sage.service.Album;
 import com.sage.service.AlbumNotFoundException;
-import com.sage.service.AlbumNotFoundException;
+import com.sage.service.AlbumNotFoundException; 
 
 public interface AlbumService {
  

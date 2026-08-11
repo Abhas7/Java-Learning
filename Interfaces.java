@@ -25,4 +25,4 @@ class HelloDemo {
         Maths m1 = (a, b) -> a + b; 
         System.out.println(m1.sum(10, 20));
     }
-}
+} 
