@@ -2,6 +2,10 @@ package com.sage.service;
 
 import java.util.List;
 
+import com.sage.service.Album;
+import com.sage.service.AlbumNotFoundException;
+import com.sage.service.AlbumNotFoundException;
+
 public interface AlbumService {
  
     Album save(Album a);
@@ -12,7 +16,7 @@ public interface AlbumService {
 
     Album findByTitle(String title) throws AlbumNotFoundException;
 
-    List<Album> findByArtist(String artist);
+    List<Album> findByArtist(String artist); 
 
     List<Album> findByGenre(String genre); 
 

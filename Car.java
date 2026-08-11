@@ -9,7 +9,7 @@
     public T getData() {
         return data;
     } 
-
+        
     public void setData(T data) { 
         this.data = data;
     }
@@ -18,7 +18,7 @@
         Demo<String> d1 = new Demo<String>("Heyy");
         System.out.println(d1.getData());
 
-        Demo<Integer> d2 = new Demo<Integer>(22);
+        Demo<Integer> d2 = new Demo<Integer>(22); 
         System.out.println(d2.getData());
     }
 }*/
