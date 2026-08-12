@@ -17,7 +17,7 @@ class HelloDemo {
     public static void main(String[] args) {
 
         Hello h1 = () -> System.out.println("Hello Lambda");
-        h1.sayHello();
+        h1.sayHello();    
 
         Greeting g1 = () -> "Good Morning";
         System.out.println(g1.greet());
